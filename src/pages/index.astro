@@ -1,0 +1,699 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../layouts/layout.astro";
+import video from "../assets/videos/Main_16-9.mp4";
+import Gif from "../assets/videos/f81746b3d40a398606f712a61a120482eea32cae.gif";
+import Elegante from "../assets/images/TransCote 1.png";
+import personnalisable from "../assets/images/personnalisable.png";
+import France from "../assets/images/france.png";
+import Innovante from "../assets/images/innovante.png";
+import Savoureuse from "../assets/images/savoureuse.png";
+import Buttondecouvrir from "../components/button/decouvrir.astro";
+import Savor1 from "../assets/images/IMAGE.png";
+import Savors from "../components/savor.astro";
+import Suçotebluetooth from "../assets/images/sucettebluetooth.png";
+import Spotify from "../assets/videos/Spotify Motion RENDER.mp4";
+import SpotifyLogo from "../assets/icons/Spotify.svg";
+import Mynthos from "../assets/images/mynthos.png";
+import Streamer from "../assets/icons/streamer.svg";
+import Youtube from "../assets/icons/youtube.svg";
+import Baghera from "../assets/images/Photo-1.png";
+import JoueurGrenier from "../assets/images/Photo-2.png";
+import Etoiles from "../assets/images/Photo.png";
+
+const savors = [
+  {
+    name: "Fraise",
+    image: "/src/assets/images/IMAGE.png",
+    description: "Une fraise française cueilli dans nos chers régions dg",
+  },
+  {
+    name: "Menthe",
+    image: "/src/assets/images/IMAGE-1.png",
+    description: "Pour une haleine fraîche avant vos réunions",
+  },
+  {
+    name: "bubble gum",
+    image: "/src/assets/images/IMAGE-2.png",
+    description: "Un goût sucré pour retourner en enfance",
+  },
+  {
+    name: "spicy",
+    image: "/src/assets/images/IMAGE-3.png",
+    description:
+      "Pour ceux qui aiment vivre de nouvelles choses tous les jours",
+  },
+  {
+    name: "bacon fumé",
+    image: "/src/assets/images/IMAGE-4.png",
+    description: "U goût d eporc pour honorer nos élevages made in france",
+  },
+  {
+    name: "france",
+    image: "/src/assets/images/IMAGE-5.png",
+    description: "Suçotez la République avec cet étendard bleu blanc rouge",
+  },
+  {
+    name: "jus de mynthos",
+    image: "/src/assets/images/IMAGE-6.png",
+    description: "Profiez du goût concentré de la première traite du matin",
+  },
+  {
+    name: "montazac et torez",
+    image: "/src/assets/images/IMAGE-7.png",
+    description: "Pour retrouver le goût d'un vin unique",
+  },
+];
+---
+
+<Layout>
+  <!-- Hero section -->
+  <video
+    class="relative -top-10 w-full z-[-10]"
+    autoplay
+    loop
+    muted
+    playsinline
+  >
+    <source src={video} type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+  <section class="absolute inset-0 flex flex-col items-center w-full top-20">
+    <!-- Gradient overlay -->
+    <div
+      class="absolute top-20 w-screen h-[1000px] bg-gradient-to-t from-bg-1 via-bg-1/90 to-transparent -z-9"
+    >
+    </div>
+
+    <!-- Content -->
+    <div class="relative top-100 flex text-fg-1 flex-col items-center mx-auto">
+      <h2 class="text-lg font-serif">the french tototte®</h2>
+      <div class="flex w-6 h-1.5">
+        <div class="bg-[#003DB3] w-8"></div>
+        <div class="bg-white w-8"></div>
+        <div class="bg-[#F73C53] w-8"></div>
+      </div>
+      <h1 class="text-5xl text-center font-serif pt-7 pb-13">
+        pour ceux qui osent<br />être différents
+      </h1>
+      <Buttondecouvrir />
+    </div>
+  </section>
+
+  <section class="py-40">
+    <div class="grid grid-cols-3 grid-rows-3 gap-4 max-w-5xl mx-auto">
+      <div class="row-span-2">
+        <Image src={Elegante} alt="Elegante" class="pt-40 pr-30" />
+        <div class="flex flex-col gap-6">
+          <h2 class="font-serif text-2xl text-fg-1">
+            élégante et sophistiquée
+          </h2>
+          <p class="font-sm text-fg-3">
+            Design raffiné et ornements exclusifs pour une expérience de
+            vapotage distinguée et élégante
+          </p>
+        </div>
+      </div>
+      <div class="relative col-span-2">
+        <Image
+          src={personnalisable}
+          alt="personnalisable"
+          class="absolute inset-0 w-full h-full object-cover -z-10"
+        />
+        <div class="grid grid-cols-3 gap-6 z-10 h-full">
+          <div class="flex flex-col col-span-4 col-start-2 justify-center">
+            <h2 class="font-serif text-2xl text-fg-1">personnalisable</h2>
+            <p class="text-sm text-fg-3">
+              Ornements et accessoires premium pour créer une vapoteuse unique
+              qui reflète votre style personnel
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- made in france card -->
+      <div class="relative overflow-hidden flex flex-col items-center p-8">
+        <!-- Background blurred image -->
+        <div class="absolute inset-0 -top-1/2">
+          <Image
+            src={France}
+            alt="personnalisable"
+            class="w-full h-full object-cover blur-3xl"
+          />
+        </div>
+
+        <!-- Foreground main image -->
+        <Image src={France} alt="personnalisable" class="z-10 object-none" />
+
+        <!-- Text content -->
+        <div class="relative z-10 mt-6 max-w-xl text-start">
+          <h2 class="font-serif text-2xl text-fg-1">made in france</h2>
+          <p class="mt-2 text-sm text-fg-3">
+            Savoir-faire français pour une expérience de suçotage authentique et
+            exceptionnelle
+          </p>
+        </div>
+      </div>
+
+      <!-- Innovante card -->
+      <div class="">
+        <!-- Text content -->
+        <div class="relative z-10 mt-6 max-w-xl text-start">
+          <h2 class="font-serif text-2xl text-fg-1">made in france</h2>
+          <p class="mt-2 text-sm text-fg-3">
+            Savoir-faire français pour une expérience de suçotage authentique et
+            exceptionnelle
+          </p>
+        </div>
+        <Image
+          src={Innovante}
+          alt="innovante"
+          class="w-full h-full object-cover z-9"
+        />
+      </div>
+
+      <!-- Savoureuse -->
+      <div class="relative bg-[#EFF2FD] col-span-2 flex overflow-hidden">
+        <div>
+          <h2 class="font-serif text-2xl text-fg-1">savoureuse</h2>
+          <p class="text-sm text-fg-3">
+            Palette de saveurs exquises pour une expérience de suçotage
+            délicieusement satisfaisante et immersive.
+          </p>
+        </div>
+
+        <Image
+          src={Savoureuse}
+          alt="Elegante"
+          class="absolute -bottom-1/3 -right-80 w-full h-full object-cover z-0"
+        />
+      </div>
+
+      <!-- Hebergement card -->
+      <div class="grid grid-row-2 bg-bg-3 p-8">
+        <!-- flag -->
+        <div class="flex w-24 h-3">
+          <div class="bg-[#003DB3] w-8"></div>
+          <div class="bg-white w-8"></div>
+          <div class="bg-[#F73C53] w-8"></div>
+        </div>
+        <div class="">
+          <h2 class="font-serif text-2xl text-fg-1">
+            hébergement 100% français
+          </h2>
+          <p class="text-sm text-fg-3">
+            Notre site web est hébergé en france grâce à notre partenaire
+            o2switch
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section>
+    <div class="relative flex flex-col max-w-2xl mx-auto">
+      <!-- Radial blur background only half -->
+      <div class="absolute inset-0 -z-10 flex justify-center">
+        <div
+          class="w-[150%] h-1/2 bg-gradient-radial from-bg-4 to-transparent blur-3xl"
+          style="mask-image: linear-gradient(to top, black 50%, transparent 100%); -webkit-mask-image: linear-gradient(to top, black 50%, transparent 100%);"
+        >
+        </div>
+      </div>
+
+      <!-- GIF -->
+      <img
+        src={Gif.src}
+        width={Gif.width}
+        height={Gif.height}
+        alt="Gif"
+        class="object-cover"
+      />
+
+      <!-- Text grid -->
+      <div class="grid grid-cols-2 grid-rows-2 gap-6 mt-8">
+        <h2 class="text-5xl font-serif text-fg-1">technologie plug’n’tote</h2>
+        <p class="row-start-2 text-fg-3">
+          La tototte est équipée de la
+          <span class="font-bold text-fg-1">technologie plug'n'tote</span>,
+          permettant de changer de plug à volonté, offrant ainsi un accès à une
+          <span class="font-bold text-fg-1"
+            >gamme infinie de saveurs de suçotage</span
+          >
+          pour satisfaire tous les goûts.
+        </p>
+        <p class="col-start-2 row-start-2 text-fg-3">
+          Cette technologie vous permet de changer en un clin d’œil de saveur
+          pour <span class="font-bold text-fg-1"
+            >voyager du bout des lèvres</span
+          >.
+        </p>
+      </div>
+
+      <Buttondecouvrir />
+    </div>
+  </section>
+
+  <!-- Savors section -->
+  <section>
+    <div class="flex flex-col max-w-3xl mx-auto gap-20">
+      <div class="relative flex max-w-3xl mx-auto">
+        <!-- Background -->
+        <div class="absolute flex flex-col w-full h-60">
+          <div class="w-full h-30 overflow-hidden">
+            <div
+              class="w-full h-60 bg-radial from-bg-3 via-transparent to-transparent"
+            >
+            </div>
+          </div>
+          <div class="w-full h-30 overflow-hidden">
+            <div
+              class="relative -top-30 w-full h-60 bg-radial from-bg-4 from-0% to-transparent to-70%"
+            >
+            </div>
+          </div>
+        </div>
+        <!-- Savors set-up -->
+        {savors.map((savor) => <Savors {...savor} />)}
+      </div>
+      <!-- Savors recap -->
+      <div class="flex justify-between">
+        <div class="flex flex-col w-5">
+          <h2 class="text-4xl font-bold text-fg-1">30</h2>
+          <p class="text-xs text-fg-2">Saveurs disponibles</p>
+        </div>
+        <div class="flex flex-col w-5">
+          <h2 class="text-4xl font-bold text-fg-1">11</h2>
+          <p class="text-xs text-fg-2">Vertus médicinales</p>
+        </div>
+        <p class="w-1/2 text-fg-2">
+          Laissez-vous tenter par les saveurs des différents plugs et <span
+            class="font-bold text-fg-1">découvrez un monde de délices</span
+          > pour chaque envie.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Suçote bluetooth -->
+  <section>
+    <div class="relative max-w-3xl mx-auto pt-0">
+      <div class="absolute inset-0">
+        <Image
+          src={Suçotebluetooth}
+          alt={Suçotebluetooth}
+          class="absolute -rotate-45 top-1/3 hover:-rotate-15 transition-all duration-1000 ease-in-out"
+        />
+      </div>
+      <div class="grid grid-cols-2 grid-rows-3 gap-20">
+        <div class="col-start-1">
+          <h2 class="font-serif text-5xl text-fg-1">
+            suçotez<br />sans<br />soucis
+          </h2>
+          <p class="text-fg-3">
+            La tototte offre une <span class="text-fg-1 font-bold"
+              >autonomie impressionnante</span
+            > de 50 heures de suçotage grâce à sa batterie au lithium, assurant ainsi
+            <span class="text-fg-1 font-bold"
+              >des heures de plaisir ininterrompu</span
+            > pour encore plus de confort et de tranquillité.
+          </p>
+        </div>
+        <div class="flex flex-col col-start-2 row-start-3 gap-10">
+          <div class="flex flex-col w-2/3">
+            <h2 class="font-bold text-5xl text-fg-1">50h</h2>
+            <p class="text-fg-3 font-medium">
+              de suçotage Bluetooth sans interruption
+            </p>
+          </div>
+          <p class="text-fg-3 font-medium">
+            Grâce aux <span class="text-fg-1 font-bold"
+              >technologies sans contact</span
+            > profitez d’une recharge rapide sur son socle à induction
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Suçotez vos titres -->
+  <section class="relative flex flex-col">
+    <div
+      class="absolute bg-gradient-to-b from-transparent via-bg-3 to-transparent w-full h-4/4 z-[-10]"
+    >
+    </div>
+    <div class="flex flex-col max-w-3xl mx-auto gap-20 py-40">
+      <!-- Video spotify -->
+      <video
+        class="w-full border-fg-1 border-2"
+        autoplay
+        loop
+        muted
+        playsinline
+      >
+        <source src={Spotify} type="video/mp4" />
+      </video>
+      <!-- Description -->
+      <div class="flex gap-20">
+        <h2 class="font-serif text-5xl text-fg-1 px-4">
+          suçotez vos titres préférés
+        </h2>
+        <div class="flex flex-col gap-8">
+          <div class="flex flex-col w-2/3 gap">
+            <button
+              class="flex justify-center border-fg-1 border-1 w-3/4 gap-1 px-4 py-4"
+              ><SpotifyLogo />Spotify Connect®</button
+            >
+            <p class="text-fg-3 font-medium text-sm">
+              En partenariat exclusif avec Spotify
+            </p>
+          </div>
+          <p class="text-fg-3 font-medium">
+            Grâce aux <span class="text-fg-1 font-bold"
+              >technologies sans contact</span
+            > profitez d’une recharge rapide sur son socle à induction
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Collaboration jus de myhnthos -->
+  <section>
+    <div class="grid grid-cols-2 items-center max-w-3xl mx-auto gap-40">
+      <Image src={Mynthos} alt={Mynthos} class="" />
+      <div class="flex flex-col gap-10">
+        <div class="flex flex-col gap-4">
+          <h2 class="font-serif text-5xl text-fg-1">le jus de mynthos</h2>
+          <p class="text-fg-2 font-medium text-sm border">
+            Collaboration exclusive
+          </p>
+        </div>
+        <p class="text-fg-3 font-medium">
+          Découvrez l'exclusivité : la fusion inédite entre <span
+            class="text-fg-1 font-bold">Le Jus de Mynthos</span
+          > et <span class="text-fg-1 font-bold">the french tototte®</span>,
+          offrant un goût rare et recherché. Une collaboration qui révèle
+          l'essence de l'excellence et de l'originalité, à savourer sans plus
+          attendre.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust panel -->
+  <section class="flex flex-col gap-40 py-40">
+    <div class="flex flex-col max-w-5xl mx-auto">
+      <div class="flex flex-col justify-center">
+        <h2 class="font-serif text-center text-5xl text-fg-1">
+          ils ont suçoté,<br />ils ont adoré
+        </h2>
+        <p class="text-fg-3 text-center font-medium">
+          Nos totottes sont utilisées par les plus grands de ce<br />monde et si
+          vous voulez mon avis ce n’est pas un hasard
+        </p>
+      </div>
+    </div>
+
+    <!-- Profiles -->
+    <div
+      class="grid grid-cols-1 md:grid-cols-3 h-screen gap-12 items-start max-w-5xl mx-auto"
+    >
+      <!-- Left profile -->
+      <div class="text-left flex flex-col self-center">
+        <Image
+          src={Baghera}
+          alt={Baghera}
+          class="w-32 h-32 rounded-full object-cover mb-4"
+        />
+        <p class="font-bold text-fg-1">/Baghera Jones</p>
+        <div class="flex">
+          <Streamer />
+          <p class="text-sm text-fg-3">Streamer</p>
+        </div>
+        <p class="mt-2 text-fg-3 max-w-xs">
+          J’ai arrêté de vape depuis que j’ai découvert the french tototte®
+        </p>
+      </div>
+
+      <!-- Center profile -->
+      <div class="text-left flex flex-col self-end">
+        <Image
+          src={JoueurGrenier}
+          alt={JoueurGrenier}
+          class="w-36 h-36 rounded-full object-cover mb-4"
+        />
+        <p class="font-bold text-fg-1">/Joueur_du_Grenier</p>
+        <div class="flex items-center">
+          <Youtube />
+          <p class="text-sm text-fg-3">Youtuber</p>
+        </div>
+        <p class="mt-2 text-fg-3 max-w-xs">
+          J’ai commandé un pack pour toute la famille et même mon fils Légolas
+          San Goku adore sa the french tototte®
+        </p>
+      </div>
+
+      <!-- Right profile -->
+      <div class="text-left flex flex-col items-start self-start">
+        <Image
+          src={Etoiles}
+          alt={Etoiles}
+          class="w-32 h-32 rounded-full object-cover mb-4"
+        />
+        <p class="font-bold text-fg-1">/Etoiles</p>
+        <div class="flex">
+          <Streamer />
+          <p class="text-sm text-fg-3">Streamer</p>
+        </div>
+        <p class="mt-2 text-fg-3 max-w-xs">
+          Grâce à the french tototte® je régule mon taux d’insuline
+          parfaitement et je n’achète plus de saumon ni de nutella !
+        </p>
+      </div>
+    </div>
+
+    <section
+      x-data="{
+    finition: '1',
+    ornement: '1',
+    currentIndex: 0,
+    groups: {
+      '1': { '1': ['1.png', '2.png', '3.png'], '2': ['1-1.png', '2-1.png', '3-1.png'], '3': ['1-2.png', '2-2.png', '3-2.png'], '4': ['1-3.png', '2-3.png', '3-3.png'] },
+      '2': { '1': ['2-1.png', '2-2.png', '2-3.png'], '2': ['2.png', '2-1.png'], '3': ['3.png', '3-1.png'], '4': ['4.png', '4-1.png'] },
+      '3': { '1': ['1.png', '1-1.png'], '2': ['2.png', '2-1.png'], '3': ['3.png', '3-1.png'], '4': ['4.png', '4-1.png'] },
+    },
+    saveur: 'fraise',
+    get currentImage() {
+      return `/images/${this.groups[this.finition][this.ornement][this.currentIndex]}`
+    },
+    next() {
+      const imgs = this.groups[this.finition][this.ornement]
+      this.currentIndex = (this.currentIndex + 1) % imgs.length
+    },
+    prev() {
+      const imgs = this.groups[this.finition][this.ornement]
+      this.currentIndex = (this.currentIndex - 1 + imgs.length) % imgs.length
+    }
+  }"
+      class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto p-8"
+    >
+      <!-- Left: Floating product image -->
+      <div class="relative">
+        <div class="sticky top-20 flex flex-col items-center">
+          <img
+            :src="currentImage"
+            alt="Produit"
+            class="w-full rounded-2xl shadow-lg"
+          />
+          <div class="flex gap-4 mt-4">
+            <button @click="prev" class="px-3 py-1 bg-gray-200 rounded"
+              >Précédent</button
+            >
+            <button @click="next" class="px-3 py-1 bg-gray-200 rounded"
+              >Suivant</button
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Customization options -->
+      <div class="flex flex-col gap-6">
+        <h2 class="font-serif text-5xl text-fg-1">
+          personnalisez votre tototte
+        </h2>
+        <p class="text-fg-3 font-medium">
+          Vous allez créer la tototte idéale pour vous. À chacun son expérience,
+          à chacun sa tototte.
+        </p>
+
+        <!-- Finition -->
+        <div>
+          <h3 class="text-2xl font-serif">Finition</h3>
+          <p class="text-fg-3 font-medium">Choisissez votre favorite</p>
+          <div class="flex gap-4 justify-center">
+            <template
+              x-for="(label, value) in { '1':'rose', '2':'bleu', '3':'blanc', '4':'noir' }"
+              :key="value"
+            >
+              <label>
+                <input
+                  type="radio"
+                  name="finition"
+                  :value="value"
+                  x-model="finition"
+                  class="hidden peer"
+                />
+                <span
+                  class="w-10 h-10 rounded-full block cursor-pointer border-2 border-transparent peer-checked:border-fg-1"
+                  :class="{
+                'bg-[#f9d9d3]': value==='1',
+                'bg-[#c3dbf9]': value==='2',
+                'bg-[#f3f3f3]': value==='3',
+                'bg-[#4a4a4a]': value==='4'
+              }"
+                ></span>
+              </label>
+            </template>
+          </div>
+        </div>
+
+        <!-- Ornement -->
+        <div>
+          <h3 class="text-2xl font-serif">Ornement</h3>
+          <p class="text-fg-3 font-medium">Choisissez votre pierre précieuse</p>
+          <div class="flex gap-4 justify-center">
+            <template
+              x-for="(label, value) in { '1':'bleu', '2':'vert', '3':'rose', '4':'darkgreen' }"
+              :key="value"
+            >
+              <label>
+                <input
+                  type="radio"
+                  name="ornement"
+                  :value="value"
+                  x-model="ornement"
+                  class="hidden peer"
+                />
+                <span
+                  class="w-10 h-10 rounded-full block cursor-pointer border-2 border-transparent peer-checked:border-fg-1"
+                  :class="{
+                'bg-blue-400': value==='1',
+                'bg-green-400': value==='2',
+                'bg-pink-400': value==='3',
+                'bg-green-800': value==='4'
+              }"
+                ></span>
+              </label>
+            </template>
+          </div>
+        </div>
+
+        <!-- Saveur -->
+        <div>
+          <h3 class="text-2xl font-serif">Pack saveur</h3>
+          <select x-model="saveur" class="border p-2 rounded-md w-full">
+            <option value="fraise">Fraise</option>
+            <option value="vanille">Vanille</option>
+            <option value="menthe">Menthe</option>
+          </select>
+        </div>
+
+        <!-- Panier résumé -->
+        <div class="p-4 border rounded-lg bg-neutral-50">
+          <h3 class="text-lg font-semibold mb-2">Votre panier est prêt</h3>
+          <ul class="text-sm space-y-1">
+            <li><strong>Finition:</strong> <span x-text="finition"></span></li>
+            <li><strong>Ornement:</strong> <span x-text="ornement"></span></li>
+            <li><strong>Saveur:</strong> <span x-text="saveur"></span></li>
+          </ul>
+          <button class="mt-4 px-4 py-2 bg-fg-1 text-white rounded-md shadow"
+            >Ajouter au panier</button
+          >
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <div
+    x-data="{
+    finition: '1',
+    ornement: '1',
+    currentIndex: 0,
+    groups: {
+      '1': { '1': ['1.png', '1-1.png'], '2': ['2.png', '2-1.png'], '3': ['3.png', '3-1.png'], '4': ['4.png', '4-1.png'] },
+      '2': { '1': ['1.png', '1-1.png'], '2': ['2.png', '2-1.png'], '3': ['3.png', '3-1.png'], '4': ['4.png', '4-1.png'] },
+      '3': { '1': ['1.png', '1-1.png'], '2': ['2.png', '2-1.png'], '3': ['3.png', '3-1.png'], '4': ['4.png', '4-1.png'] },
+    },
+    get currentImage() {
+      return `/images/${this.groups[this.finition][this.ornement][this.currentIndex]}`
+    },
+    next() {
+      const imgs = this.groups[this.finition][this.ornement]
+      this.currentIndex = (this.currentIndex + 1) % imgs.length
+    },
+    prev() {
+      const imgs = this.groups[this.finition][this.ornement]
+      this.currentIndex = (this.currentIndex - 1 + imgs.length) % imgs.length
+    }
+  }"
+    class="flex flex-col items-center space-y-4"
+  >
+    <!-- Sélection finition -->
+    <div class="flex space-x-2">
+      <button
+        @click="finition = '1'; currentIndex = 0"
+        class="px-2 py-1 bg-gray-200 rounded">Finition 1</button
+      >
+      <button
+        @click="finition = '2'; currentIndex = 0"
+        class="px-2 py-1 bg-gray-200 rounded">Finition 2</button
+      >
+      <button
+        @click="finition = '3'; currentIndex = 0"
+        class="px-2 py-1 bg-gray-200 rounded">Finition 3</button
+      >
+    </div>
+
+    <!-- Sélection ornement -->
+    <div class="flex space-x-2">
+      <button
+        @click="ornement = '1'; currentIndex = 0"
+        class="px-2 py-1 bg-blue-200 rounded">Ornement 1</button
+      >
+      <button
+        @click="ornement = '2'; currentIndex = 0"
+        class="px-2 py-1 bg-blue-200 rounded">Ornement 2</button
+      >
+      <button
+        @click="ornement = '3'; currentIndex = 0"
+        class="px-2 py-1 bg-blue-200 rounded">Ornement 3</button
+      >
+      <button
+        @click="ornement = '4'; currentIndex = 0"
+        class="px-2 py-1 bg-blue-200 rounded">Ornement 4</button
+      >
+    </div>
+
+    <!-- Image affichée -->
+    <div
+      class="relative w-64 h-64 border rounded flex items-center justify-center bg-gray-50"
+    >
+      <img
+        :src="currentImage"
+        alt="Produit"
+        class="max-h-full max-w-full object-contain"
+      />
+    </div>
+
+    <!-- Boutons navigation -->
+    <div class="flex space-x-4">
+      <button @click="prev" class="px-3 py-1 bg-gray-300 rounded"
+        >← Précédent</button
+      >
+      <button @click="next" class="px-3 py-1 bg-gray-300 rounded"
+        >Suivant →</button
+      >
+    </div>
+  </div>
+</Layout>

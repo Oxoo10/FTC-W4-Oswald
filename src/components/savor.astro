@@ -1,0 +1,50 @@
+---
+import { Image } from 'astro:assets';
+import Savor1 from "../assets/images/IMAGE.png";
+
+const{name, image, description} = Astro.props;
+---
+<div class="relative group w-32 h-32">
+        <!-- The element you hover -->
+        <div
+          class=""
+        >
+          <img src={image} alt={name} class="w-32 h-32 object-contain transition-transform duration-300 group-hover:-translate-y-6" />
+          <!-- Shadow effect -->
+          <div
+            class="absolute left-16 bottom-0 bg-fg-1 w-10 h-5 rounded-[50%] -translate-x-1/2 transition-all duration-300 group-hover:w-14 -z-10 blur-xs opacity-50"
+          >
+          </div>
+        </div>
+
+        <!-- Hidden info box -->
+        <div
+          class="absolute inset- -top-35 left-15 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        >
+          <div
+            class="relative w-xs bg-bg-1 border-2 border-fg-1 p-4 shadow-lg"
+          >
+            <!-- Title -->
+            <h3 class="text-xl font-serif font-bold text-neutral-900">
+              {name}
+            </h3>
+
+            <!-- Description -->
+            <p class="mt-2 text-neutral-600 leading-relaxed font-sans">
+              {description}
+            </p>
+
+            <!-- Pointer line -->
+            <div
+              class="absolute -bottom-6 left-4 w-px h-6 rotate-[28deg] bg-neutral-800"
+            >
+            </div>
+
+            <!-- Pointer dot -->
+            <div
+              class="absolute -bottom-7 left-1.5 w-2 h-2 rounded-full bg-neutral-800"
+            >
+            </div>
+          </div>
+        </div>
+      </div>
