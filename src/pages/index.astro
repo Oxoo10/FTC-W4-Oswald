@@ -473,20 +473,44 @@ const savors = [
       </div>
     </div>
 
-    <section
-      x-data="{
+    <section class="relative">
+      <div class="absolute left-0 bottom-0 top-1/2 bg-fg-1 w-screen -z-10">
+        wefe
+      </div>
+      <div
+        x-data="{
     finition: '1',
+    finitionNames: { '1':'Rose', '2':'Bleu', '3':'Blanc', '4':'Noir' },
+    
     ornement: '1',
+    ornementNames: { '1':'Bleu', '2':'Vert', '3':'Rose', '4':'Vert foncé' },
+
     currentIndex: 0,
+    saveur: null,
+
+     // Product base price
+    baseProduct: { name: 'The French Tototte', price: 99 },
+
     groups: {
       '1': { '1': ['1.png', '2.png', '3.png'], '2': ['1-1.png', '2-1.png', '3-1.png'], '3': ['1-2.png', '2-2.png', '3-2.png'], '4': ['1-3.png', '2-3.png', '3-3.png'] },
-      '2': { '1': ['2-1.png', '2-2.png', '2-3.png'], '2': ['2.png', '2-1.png'], '3': ['3.png', '3-1.png'], '4': ['4.png', '4-1.png'] },
-      '3': { '1': ['1.png', '1-1.png'], '2': ['2.png', '2-1.png'], '3': ['3.png', '3-1.png'], '4': ['4.png', '4-1.png'] },
+      '2': { '1': ['2-1.png', '2-2.png', '2-3.png'], '2': ['1-3.png', '2-3.png', '3-3.png'], '3': ['1-3.png', '2-3.png', '3-3.png'], '4': ['1-3.png', '2-3.png', '3-3.png'] },
+      '3': { '1': ['1.png', '2.png', '3.png'], '2': ['1-1.png', '2-1.png', '3-1.png'], '3': ['1-2.png', '2-2.png', '3-2.png'], '4': ['1-3.png', '2-3.png', '3-3.png'] },
+      '4': { '1': ['1.png', '2.png', '3.png'], '2': ['1-1.png', '2-1.png', '3-1.png'], '3': ['1-2.png', '2-2.png', '3-2.png'], '4': ['1-3.png', '2-3.png', '3-3.png'] },
     },
-    saveur: 'fraise',
+
+    // Packs saveur
+    packs: [
+      { id: 'starter', title: 'Pack Starter', description: '3 saveurs de découverte', price: 0 },
+      { id: 'suçoteur', title: 'Pack Suçoteur', description: '6 saveurs', price: 29 },
+      { id: 'suçoteur-pro', title: 'Pack Suçoteur Pro', description: '12 saveurs + 1 jus de Mynthos', price: 49 }
+    ],
+
+    // Current displayed image
     get currentImage() {
       return `/images/${this.groups[this.finition][this.ornement][this.currentIndex]}`
     },
+
+    // Navigation
     next() {
       const imgs = this.groups[this.finition][this.ornement]
       this.currentIndex = (this.currentIndex + 1) % imgs.length
@@ -494,206 +518,234 @@ const savors = [
     prev() {
       const imgs = this.groups[this.finition][this.ornement]
       this.currentIndex = (this.currentIndex - 1 + imgs.length) % imgs.length
+    },
+
+     // Computed: selected pack object
+    get selectedPack() {
+      return this.packs.find(p => p.id === this.saveur) || { title: '', price: 0 }
+    },
+
+    // Computed: total price
+    get total() {
+      return this.baseProduct.price + this.selectedPack.price
+    },
+
+    // Format price with €
+    formatPrice(val) {
+      return val === 0 ? 'Offert' : val.toFixed(2) + ' €'
     }
   }"
-      class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto p-8"
-    >
-      <!-- Left: Floating product image -->
-      <div class="relative">
-        <div class="sticky top-20 flex flex-col items-center">
-          <img
-            :src="currentImage"
-            alt="Produit"
-            class="w-full rounded-2xl shadow-lg"
-          />
-          <div class="flex gap-4 mt-4">
-            <button @click="prev" class="px-3 py-1 bg-gray-200 rounded"
-              >Précédent</button
-            >
-            <button @click="next" class="px-3 py-1 bg-gray-200 rounded"
-              >Suivant</button
-            >
+        class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto p-8"
+      >
+        <!-- Left: Floating product image -->
+        <div class="relative">
+          <div class="sticky top-20 flex flex-col items-center">
+            <img
+              :src="currentImage"
+              alt="Produit"
+              class="w-full rounded-2xl shadow-lg"
+            />
+            <div class="flex gap-4 mt-4">
+              <button @click="prev" class="px-3 py-1 bg-gray-200 rounded">
+                Précédent
+              </button>
+              <button @click="next" class="px-3 py-1 bg-gray-200 rounded">
+                Suivant
+              </button>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Right: Customization options -->
-      <div class="flex flex-col gap-6">
-        <h2 class="font-serif text-5xl text-fg-1">
-          personnalisez votre tototte
-        </h2>
-        <p class="text-fg-3 font-medium">
-          Vous allez créer la tototte idéale pour vous. À chacun son expérience,
-          à chacun sa tototte.
-        </p>
+        <!-- Right: Customization options -->
+        <div class="flex flex-col gap-6">
+          <h2 class="font-serif text-5xl text-fg-1">
+            personnalisez votre tototte
+          </h2>
+          <p class="text-fg-3 font-medium">
+            Vous allez créer la tototte idéale pour vous. À chacun son
+            expérience, à chacun sa tototte.
+          </p>
 
-        <!-- Finition -->
-        <div>
-          <h3 class="text-2xl font-serif">Finition</h3>
-          <p class="text-fg-3 font-medium">Choisissez votre favorite</p>
-          <div class="flex gap-4 justify-center">
-            <template
-              x-for="(label, value) in { '1':'rose', '2':'bleu', '3':'blanc', '4':'noir' }"
-              :key="value"
-            >
-              <label>
-                <input
-                  type="radio"
-                  name="finition"
-                  :value="value"
-                  x-model="finition"
-                  class="hidden peer"
-                />
-                <span
-                  class="w-10 h-10 rounded-full block cursor-pointer border-2 border-transparent peer-checked:border-fg-1"
-                  :class="{
+          <!-- Finition -->
+          <div class="flex flex-col gap-4">
+            <h3 class="text-4xl font-serif">finition</h3>
+            <p class="text-fg-3 font-medium">Choisissez votre favorite</p>
+            <div class="flex gap-4">
+              <template
+                x-for="(label, value) in { '1':'rose', '2':'bleu', '3':'blanc', '4':'noir' }"
+                :key="value"
+              >
+                <label>
+                  <input
+                    type="radio"
+                    name="finition"
+                    :value="value"
+                    x-model="finition"
+                    class="hidden peer"
+                  />
+                  <span
+                    class="w-10 h-10 rounded-full block cursor-pointer border-2 border-transparent peer-checked:border-fg-1"
+                    :class="{
                 'bg-[#f9d9d3]': value==='1',
                 'bg-[#c3dbf9]': value==='2',
                 'bg-[#f3f3f3]': value==='3',
                 'bg-[#4a4a4a]': value==='4'
               }"
-                ></span>
-              </label>
-            </template>
+                  ></span>
+                </label>
+              </template>
+            </div>
           </div>
-        </div>
 
-        <!-- Ornement -->
-        <div>
-          <h3 class="text-2xl font-serif">Ornement</h3>
-          <p class="text-fg-3 font-medium">Choisissez votre pierre précieuse</p>
-          <div class="flex gap-4 justify-center">
-            <template
-              x-for="(label, value) in { '1':'bleu', '2':'vert', '3':'rose', '4':'darkgreen' }"
-              :key="value"
-            >
-              <label>
-                <input
-                  type="radio"
-                  name="ornement"
-                  :value="value"
-                  x-model="ornement"
-                  class="hidden peer"
-                />
-                <span
-                  class="w-10 h-10 rounded-full block cursor-pointer border-2 border-transparent peer-checked:border-fg-1"
-                  :class="{
-                'bg-blue-400': value==='1',
-                'bg-green-400': value==='2',
-                'bg-pink-400': value==='3',
-                'bg-green-800': value==='4'
-              }"
-                ></span>
-              </label>
-            </template>
-          </div>
-        </div>
-
-        <!-- Saveur -->
-        <div>
-          <h3 class="text-2xl font-serif">Pack saveur</h3>
-          <select x-model="saveur" class="border p-2 rounded-md w-full">
-            <option value="fraise">Fraise</option>
-            <option value="vanille">Vanille</option>
-            <option value="menthe">Menthe</option>
-          </select>
-        </div>
-
-        <!-- Panier résumé -->
-        <div class="p-4 border rounded-lg bg-neutral-50">
-          <h3 class="text-lg font-semibold mb-2">Votre panier est prêt</h3>
-          <ul class="text-sm space-y-1">
-            <li><strong>Finition:</strong> <span x-text="finition"></span></li>
-            <li><strong>Ornement:</strong> <span x-text="ornement"></span></li>
-            <li><strong>Saveur:</strong> <span x-text="saveur"></span></li>
-          </ul>
-          <button class="mt-4 px-4 py-2 bg-fg-1 text-white rounded-md shadow"
-            >Ajouter au panier</button
+          <!-- Ornement -->
+          <div
+            x-data="{
+    ornement: '',
+    ornementNames: {
+        '1': 'Bleu',
+        '2': 'Vert',
+        '3': 'Rose',
+        '4': 'Vert foncé'
+    }
+}"
           >
+            <!-- Ornement selection -->
+            <div class="flex flex-col gap-4">
+              <h3 class="text-4xl font-serif">Ornement</h3>
+              <p class="text-fg-3 font-medium">
+                Choisissez votre pierre précieuse
+              </p>
+              <div class="flex gap-4">
+                <template
+                  x-for="(label, value) in { '1':'bleu', '2':'vert', '3':'rose', '4':'darkgreen' }"
+                  :key="value"
+                >
+                  <label>
+                    <input
+                      type="radio"
+                      name="ornement"
+                      :value="value"
+                      x-model="ornement"
+                      class="hidden peer"
+                    />
+                    <span
+                      class="w-10 h-10 rounded-full block cursor-pointer border-2 border-transparent peer-checked:border-fg-1"
+                      :class="{
+              'bg-blue-400': value==='1',
+              'bg-green-400': value==='2',
+              'bg-pink-400': value==='3',
+              'bg-green-800': value==='4'
+            }"
+                    ></span>
+                  </label>
+                </template>
+              </div>
+            </div>
+          </div>
+
+          <!-- Saveur -->
+          <div class="flex flex-col gap-6">
+            <div>
+              <h3 class="text-4xl font-serif">pack saveur</h3>
+              <p class="text-fg-3 font-medium">
+                Choisissez votre pack de saveurs
+              </p>
+            </div>
+            <div class="grid grid-cols-1">
+              <template x-for="pack in packs" :key="pack.id">
+                <div
+                  @click="saveur = pack.id"
+                  class="flex items-center justify-between p-4 cursor-pointer transition rounded-lg"
+                  :class="saveur === pack.id ? 'border-2 border-fg-1 bg-bg-1' : 'hover:bg-gray-100'"
+                >
+                  <div class="flex flex-col">
+                    <h4 class="text-xl font-extrabold" x-text="pack.title"></h4>
+                    <p class="text-sm text-gray-600" x-text="pack.description">
+                    </p>
+                  </div>
+                  <div class="text-fg-1" x-text="formatPrice(pack.price)"></div>
+                </div>
+              </template>
+            </div>
+          </div>
+
+          <!-- Panier résumé -->
+          <div class="relative p-4 bg-fg-1 text-bg-1">
+            <div class="flex flex-col gap-2">
+              <h3 class="text-2xl font-serif">Votre panier est prêt</h3>
+              <p class="text-fg-3 font-medium">
+                Récapitulatif de votre commande
+              </p>
+            </div>
+            <ul class="text-sm space-y-1 mt-4">
+              <li class="flex justify-between">
+                <span x-text="'1x ' + baseProduct.name"></span>
+                <span x-text="formatPrice(baseProduct.price)"></span>
+              </li>
+              <li x-if="finition">
+                <strong>+ Finition</strong>
+                <span x-text="finitionNames[finition]"></span>
+              </li>
+              <li x-if="ornement">
+                <strong>+ Ornement</strong>
+                <span x-text="ornementNames[ornement]"></span>
+              </li>
+              <li class="flex justify-between">
+                <span x-text="'1x ' + selectedPack.title"></span>
+                <span x-text="formatPrice(selectedPack.price)"></span>
+              </li>
+              <li class="flex justify-between">
+                <span>Livraison</span>
+                <span>Offerte</span>
+              </li>
+              <li class="flex justify-between font-bold pt-2 mt-2">
+                <span>Prix</span>
+                <span x-text="formatPrice(total)"></span>
+              </li>
+
+              <li class="flex justify-between">
+                <span>Retrait en magasin</span>
+                <span>
+                  <select
+                    x-model="store"
+                    class="py-2 bg-fg-1 focus:ring focus:ring-fg-1"
+                  >
+                    <option value="">Tototte Store Lille</option>
+
+                    <option value="Tototte Store Paris"
+                      >Tototte Store Paris</option
+                    >
+                    <option value="Tototte Store Lyon"
+                      >Tototte Store Lyon</option
+                    >
+                  </select>
+                </span>
+              </li>
+            </ul>
+            <button class="mt-4 px-4 py-2 bg-fg-2 text-white shadow w-full">
+              Ajouter au panier
+            </button>
+            <p class="text-[9px] text-fg-3 mt-4">
+              The French Tototte est couverte par une garantie limitée contre
+              les défauts de fabrication pour une période de 2 mois à compter de
+              la date d'achat. Cette garantie ne couvre pas les dommages causés
+              par une mauvaise utilisation, une négligence ou une modification
+              non autorisée du produit. Dans les limites permises par la loi,
+              thefrenchtototte décline toute responsabilité pour les dommages
+              directs, indirects, spéciaux, accidentels ou consécutifs découlant
+              de l'utilisation ou de l'incapacité d'utiliser thefrenchtototte,
+              même si thefrenchtototte a été informée de la possibilité de tels
+              dommages. En utilisant thefrenchtototte, l'utilisateur consent à
+              la collecte et à l'utilisation de ses données conformément à la
+              politique de confidentialité de thefrenchtototte. Les informations
+              collectées peuvent inclure, mais ne sont pas limitées à, des
+              données d'utilisation, des informations de localisation et des
+              données personnelles, telles que définies dans ladite politique de
+              confidentialité.
+            </p>
+          </div>
         </div>
       </div>
     </section>
   </section>
-
-  <div
-    x-data="{
-    finition: '1',
-    ornement: '1',
-    currentIndex: 0,
-    groups: {
-      '1': { '1': ['1.png', '1-1.png'], '2': ['2.png', '2-1.png'], '3': ['3.png', '3-1.png'], '4': ['4.png', '4-1.png'] },
-      '2': { '1': ['1.png', '1-1.png'], '2': ['2.png', '2-1.png'], '3': ['3.png', '3-1.png'], '4': ['4.png', '4-1.png'] },
-      '3': { '1': ['1.png', '1-1.png'], '2': ['2.png', '2-1.png'], '3': ['3.png', '3-1.png'], '4': ['4.png', '4-1.png'] },
-    },
-    get currentImage() {
-      return `/images/${this.groups[this.finition][this.ornement][this.currentIndex]}`
-    },
-    next() {
-      const imgs = this.groups[this.finition][this.ornement]
-      this.currentIndex = (this.currentIndex + 1) % imgs.length
-    },
-    prev() {
-      const imgs = this.groups[this.finition][this.ornement]
-      this.currentIndex = (this.currentIndex - 1 + imgs.length) % imgs.length
-    }
-  }"
-    class="flex flex-col items-center space-y-4"
-  >
-    <!-- Sélection finition -->
-    <div class="flex space-x-2">
-      <button
-        @click="finition = '1'; currentIndex = 0"
-        class="px-2 py-1 bg-gray-200 rounded">Finition 1</button
-      >
-      <button
-        @click="finition = '2'; currentIndex = 0"
-        class="px-2 py-1 bg-gray-200 rounded">Finition 2</button
-      >
-      <button
-        @click="finition = '3'; currentIndex = 0"
-        class="px-2 py-1 bg-gray-200 rounded">Finition 3</button
-      >
-    </div>
-
-    <!-- Sélection ornement -->
-    <div class="flex space-x-2">
-      <button
-        @click="ornement = '1'; currentIndex = 0"
-        class="px-2 py-1 bg-blue-200 rounded">Ornement 1</button
-      >
-      <button
-        @click="ornement = '2'; currentIndex = 0"
-        class="px-2 py-1 bg-blue-200 rounded">Ornement 2</button
-      >
-      <button
-        @click="ornement = '3'; currentIndex = 0"
-        class="px-2 py-1 bg-blue-200 rounded">Ornement 3</button
-      >
-      <button
-        @click="ornement = '4'; currentIndex = 0"
-        class="px-2 py-1 bg-blue-200 rounded">Ornement 4</button
-      >
-    </div>
-
-    <!-- Image affichée -->
-    <div
-      class="relative w-64 h-64 border rounded flex items-center justify-center bg-gray-50"
-    >
-      <img
-        :src="currentImage"
-        alt="Produit"
-        class="max-h-full max-w-full object-contain"
-      />
-    </div>
-
-    <!-- Boutons navigation -->
-    <div class="flex space-x-4">
-      <button @click="prev" class="px-3 py-1 bg-gray-300 rounded"
-        >← Précédent</button
-      >
-      <button @click="next" class="px-3 py-1 bg-gray-300 rounded"
-        >Suivant →</button
-      >
-    </div>
-  </div>
 </Layout>
