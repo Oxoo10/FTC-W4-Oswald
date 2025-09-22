@@ -2,6 +2,7 @@
 
 @import "tailwindcss";
 
+
 @theme inline {
     --font-serif: var(--font-tartuffo), sans-serif;
     --font-sans: var(--font-gustavo), serif;
@@ -30,6 +31,8 @@
   --font-size-5xl: 2.875rem;
   --font-size-6xl: 3rem;
 
+  
+
   --color-fg-1: #30171B;
   --color-fg-2: #5D4043;
   --color-fg-3: #816A6C;
@@ -39,6 +42,7 @@
   --color-bg-2: #FAF6F3;
   --color-bg-3: #EBE0D8;
   --color-bg-4: #D4C2B8;
+  --color-bg-blue: #EFF1FD;
 
   --color-finission-beige1: #FFE7DB;
   --color-finission-beige2: #EECDBF;
@@ -98,7 +102,27 @@
   --animate-slide-down: slideDown 0.3s ease-out;
   --animate-scale-in: scaleIn 0.2s ease-out;
 
-  
+ @keyframes slide-twice {
+    0%   { background-position: 100% 50%; opacity: 0; }
+
+  /* Première apparition (1s) */
+  6.5% { opacity: 1; }                          /* ≈ 1s sur 15s */
+  30%  { background-position: -100% 50%; opacity: 1; }
+  40%  { opacity: 0; background-position: -100% 50%; }
+
+  /* Pause invisible (jusqu'à 10s) */
+  65%  { background-position: 100% 50%; opacity: 0; }
+
+  /* Deuxième apparition (10s) */
+  70%  { opacity: 1; }
+  83%  { background-position: -100% 50%; opacity: 1; }
+  90%  { opacity: 0; background-position: -100% 50%; }
+
+  /* Fin de la vidéo */
+  100% { background-position: 100% 50%; opacity: 0; }
+  }
+
+  --animate-slide-twice: slide-twice 16s ease-in-out infinite;
 }
 
 /* Keyframes for animations */
@@ -143,6 +167,8 @@
     opacity: 1;
   }
 }
+
+
 
 /* Custom utility classes for your design system */
 @layer utilities {

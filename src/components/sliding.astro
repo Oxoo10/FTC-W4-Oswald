@@ -1,0 +1,17 @@
+---
+const { as: Comp = "div", class: className = "", ...props } = Astro.props
+---
+
+<Comp
+  class={`relative before:content-[''] before:absolute before:bottom-[-200%] before:left-[-50%] 
+         before:w-[300%] before:h-[500%] 
+         before:bg-[linear-gradient(0deg,#3b82f6_0%,#3b82f6_25%,#60a5fa_25%,#60a5fa_50%,#f87171_50%,#f87171_75%,#ef4444_75%,#ef4444_100%)] 
+         before:rotate-45 
+         before:-translate-x-full
+         before:opacity-100
+         before:transition-all before:duration-850 before:ease-in-out
+         hover:before:opacity-100 hover:before:translate-x-full ${className}`}
+  {...props}
+>
+  <slot />
+</Comp>

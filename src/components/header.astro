@@ -1,12 +1,38 @@
 ---
-import Websitelogo from "../assets/icons/Union.svg"
+import Websitelogo from "../assets/icons/Union.svg";
+import SlidingBg from "../components/sliding.astro";
 ---
 
-<header>
-    <nav class="flex items-center justify-between max-w-7xl mx-auto">
-        <Websitelogo />
-        <button class="flex bg-fg-1 font-sans text-white px-4">
-            Acheter
-        </button>
-    </nav>
+
+<header 
+  x-data="{ scrolled: false }" 
+  x-init="window.addEventListener('scroll', () => { 
+            scrolled = window.scrollY > 465 
+          })"
+  :class="scrolled ? 'bg-gradient-to-b from-50% to-100% from-bg-2 to-transparent' : 'bg-transparent'"
+  class="fixed top-0 w-full h-[57px] lg:h-[118px] z-50 transition-all duration-300"
+>
+  <nav class="flex items-center justify-between max-w-[1440px] mx-auto 2xl:px-4 2xl:py-3 px-2 py-4">
+    
+    <!-- Left: Logo -->
+    <div class="flex-shrink-0">
+      <Websitelogo class="h-8 w-auto sm:h-10 lg:h-12" />
+    </div>
+
+    <!-- Middle: Text appears after scroll -->
+    <div 
+      x-show="scrolled" 
+      x-transition 
+      class="hidden sm:block text-lg font-serif"
+    >
+      the french tototte®
+    </div>
+
+    <!-- Right: Button -->
+    <SlidingBg as="button" class="relative overflow-hidden bg-fg-2 text-white font-sans px-4 py-2 ">Acheter</SlidingBg>
+    
+
+  </nav>
+
 </header>
+
