@@ -1,29 +1,35 @@
 ---
-
+import Websitelogo from "../assets/icons/Union.svg";
+import Instagram from "../assets/icons/instagram.svg";
+import Facebook from "../assets/icons/facebook.svg";
+import Thread from "../assets/icons/thread.svg";
+import Linkedin from "../assets/icons/linkedin.svg";
+import X from "../assets/icons/x.svg";
 ---
 
-<footer class="bg-fg-1 w-full text-neutral-100">
-  <div class="max-w-7xl mx-auto px-6 flex flex-col gap-8">
+<footer class="relative bg-fg-1 w-full text-neutral-100 overflow-b-hidden overflow-l-hidden">
+  <Websitelogo class="absolute -bottom-30 -left-100 text-fg-3/20 w-214 h-240 z-10"/>
+  <div class="max-w-7xl mx-auto px-6 flex flex-col gap-x-8 z-20">
     
     <!-- Logos -->
-    <div class="flex items-center gap-4">
-      <div class="w-16 h-16 bg-neutral-300 flex items-center justify-center rounded">
-        Logo
+     <div class="w-160 flex items-center justify-start rounded gap-4">
+        <Instagram />
+        <Facebook />
+        <Thread />
+        <Linkedin />
+        <X />
       </div>
-      <div class="w-16 h-16 bg-neutral-300 flex items-center justify-center rounded">
-        Logo
-      </div>
-    </div>
+    
 
     <!-- Content -->
-    <div class="flex flex-col lg:flex-row justify-between gap-6 text-fg-3">
+    <div class="flex flex-col lg:flex-row text-fg-3 z-20">
       <!-- Left -->
-      <h2 class="text-xl font-serif">the french tototte</h2>
+      <h2 class="text-5xl font-serif">the french tototte</h2>
       
       <!-- Right -->
-      <div class="flex flex-col gap-4 text-sm max-w-2xl">
+      <div class="flex flex-col text-xs max-w-6xl">
         <!-- Legal links -->
-        <div class="flex flex-wrap gap-2 ">
+        <div class="flex gap-2 ">
           <p>Copyright © 2024 TheFrenchTototte. Tous droits réservés</p>
           <a href="#" class="hover:underline">— Utilisation des cookies</a>
           <a href="#" class="hover:underline">— Mentions légales</a>
