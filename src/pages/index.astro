@@ -22,7 +22,7 @@ import Etoiles from "../assets/images/Photo.png";
 import Arrowleft from "../assets/icons/arrrowleft.svg";
 import Arrowright from "../assets/icons/arrowright.svg";
 import SlidingBg from "../components/sliding.astro";
-import fraiseSavor from "../assets/images/IMAGE.png";
+import fraiseSavor from "/src/assets/images/IMAGE.png";
 import mentheSavor from "../assets/images/IMAGE-1.png";
 import bubbleGumSavor from "../assets/images/IMAGE-2.png";
 import spicySavor from "../assets/images/IMAGE-3.png";
@@ -519,13 +519,13 @@ const savors = [
 
     <!-- Profiles -->
     <div
-      class="grid grid-cols-1 md:grid-cols-3 h-screen gap-12 items-start max-w-5xl mx-auto"
+      class="grid grid-cols-1 md:grid-cols-3 lg:h-150 gap-12 items-start max-w-5xl mx-auto"
     >
       <!-- Left profile -->
       <div class="text-left flex flex-col items-center lg:self-center">
         <Image
           src={Baghera}
-          alt="{Baghera}"
+          alt={Baghera}
           class="w-32 h-32 rounded-full object-cover mb-4"
         />
         <p class="font-bold text-fg-1">/Baghera Jones</p>
@@ -542,7 +542,7 @@ const savors = [
       <div class="text-left flex flex-col items-center lg:self-end">
         <Image
           src={JoueurGrenier}
-          alt="{JoueurGrenier}"
+          alt={JoueurGrenier}
           class="w-36 h-36 rounded-full object-cover mb-4"
         />
         <p class="font-bold text-fg-1">/Joueur_du_Grenier</p>
@@ -560,7 +560,7 @@ const savors = [
       <div class="text-left flex flex-col items-center lg:self-start">
         <Image
           src={Etoiles}
-          alt="{Etoiles}"
+          alt={Etoiles}
           class="w-32 h-32 rounded-full object-cover mb-4"
         />
         <p class="font-bold text-fg-1">/Etoiles</p>
@@ -642,7 +642,6 @@ formatPrice(val) {
     >
       <!-- Left: Floating product image -->
 
-      <!-- Right: Customization options -->
       <div class="max-w-[1440px] mx-auto grid lg:grid-cols-3 gap-8 p-8">
         <div
           class="sticky top-24 self-start lg:col-span-2 flex flex-col items-center"
