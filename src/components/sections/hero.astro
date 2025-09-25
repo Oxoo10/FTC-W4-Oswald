@@ -1,0 +1,45 @@
+---
+import { Image } from "astro:assets";
+import video from "./src/assets/videos/Main_16-9.mp4";
+import Buttondecouvrir from "../button/decouvrir.astro";
+---
+
+<section class="relative flex flex-col items-center w-full pb-60">
+    <div
+      class="absolute flex justify-center border w-full z-[-10] mask-b-from-20% to-60% overflow-x-clip"
+    >
+      <video class="min-w-[995px] h-auto" autoplay loop muted playsinline>
+        <source src={video} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <!-- Content -->
+    <div
+      class="relative top-100 flex text-fg-1 flex-col items-center gap-10 mx-auto"
+    >
+      <h2 class="text-lg font-serif">the french tototte®</h2>
+      <div class="flex w-6 h-1.5">
+        <div class="bg-[#003DB3] w-8"></div>
+        <div class="bg-white w-8"></div>
+        <div class="bg-[#F73C53] w-8"></div>
+      </div>
+      <div class="relative inline-block">
+        <!-- Solid fallback text (always visible) -->
+        <h1 class="text-5xl text-center font-serif pt-7 pb-13 text-fg-1">
+          pour ceux qui osent<br />être différents
+        </h1>
+
+        <!-- Animated gradient text (fades in/out) -->
+        <h1
+          class="absolute inset-0 text-5xl text-center font-serif pt-7 pb-13
+             bg-[linear-gradient(90deg,#30171B_0%,#30171B_40%,#3b82f6_40%,#3b82f6_42%,#60a5fa_42%,#60a5fa_45%,#f87171_45%,#f87171_47%,#ef4444_47%,#ef4444_49%,#30171B_49%,#30171B_100%)]
+             bg-[length:200%_100%] bg-clip-text text-transparent
+             animate-slide-twice"
+        >
+          pour ceux qui osent<br />être différents
+        </h1>
+      </div>
+
+      <Buttondecouvrir />
+    </div>
+  </section>

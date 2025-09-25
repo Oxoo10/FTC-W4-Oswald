@@ -31,7 +31,7 @@ import franceSavor from "../assets/images/IMAGE-5.png";
 import mynthosSavor from "../assets/images/IMAGE-6.png";
 import montazacSavor from "../assets/images/IMAGE-7.png";
 import defaultVariant from "../assets/images/1-1.png";
-import Websitelogo from "../assets/icons/Union.svg";
+import Websitelogo2 from "../assets/icons/Union2.svg";
 import Instagram from "../assets/icons/instagram.svg";
 import Facebook from "../assets/icons/facebook.svg";
 import Thread from "../assets/icons/thread.svg";
@@ -41,43 +41,43 @@ import X from "../assets/icons/x.svg";
 const savors = [
   {
     name: "Fraise",
-    image: fraiseSavor,
+    image: "images/IMAGE.png",
     description: "Une fraise française cueilli dans nos chers régions dg",
   },
   {
     name: "Menthe",
-    image: mentheSavor,
+    image: "images/IMAGE-1.png",
     description: "Pour une haleine fraîche avant vos réunions",
   },
   {
     name: "bubble gum",
-    image: bubbleGumSavor,
+    image: "images/IMAGE-2.png",
     description: "Un goût sucré pour retourner en enfance",
   },
   {
     name: "spicy",
-    image: spicySavor,
+    image: "images/IMAGE-3.png",
     description:
       "Pour ceux qui aiment vivre de nouvelles choses tous les jours",
   },
   {
     name: "bacon fumé",
-    image: baconSavor,
+    image: "images/IMAGE-4.png",
     description: "U goût d eporc pour honorer nos élevages made in france",
   },
   {
     name: "france",
-    image: franceSavor,
+    image: "images/IMAGE-5.png",
     description: "Suçotez la République avec cet étendard bleu blanc rouge",
   },
   {
     name: "jus de mynthos",
-    image: mynthosSavor,
+    image: "images/IMAGE-6.png",
     description: "Profiez du goût concentré de la première traite du matin",
   },
   {
     name: "montazac et torez",
-    image: montazacSavor,
+    image: "images/IMAGE-7.png",
     description: "Pour retrouver le goût d'un vin unique",
   },
 ];
@@ -336,7 +336,7 @@ const savors = [
   </section>
 
   <!-- Savors section -->
-  <section class="px-6">
+  <section class="px-6 overflow-hidden">
     <div class="flex flex-col max-w-3xl mx-auto gap-20 py-50">
       <div
         class="relative grid grid-rows-2 grid-cols-4 lg:grid-rows-1 lg:grid-cols-8 max-w-3xl mx-auto"
@@ -430,7 +430,7 @@ const savors = [
     <div class="flex flex-col max-w-3xl mx-auto gap-20 py-40">
       <!-- Video spotify -->
       <video
-        class="w-full border-fg-1 border-2"
+        class="w-full border-fg-1 border-2  mix-blend-multiply"
         autoplay
         loop
         muted
@@ -525,7 +525,7 @@ const savors = [
       <div class="text-left flex flex-col items-center lg:self-center">
         <Image
           src={Baghera}
-          alt={Baghera}
+          alt="Baghera"
           class="w-32 h-32 rounded-full object-cover mb-4"
         />
         <p class="font-bold text-fg-1">/Baghera Jones</p>
@@ -542,7 +542,7 @@ const savors = [
       <div class="text-left flex flex-col items-center lg:self-end">
         <Image
           src={JoueurGrenier}
-          alt={JoueurGrenier}
+          alt="JoueurGrenier"
           class="w-36 h-36 rounded-full object-cover mb-4"
         />
         <p class="font-bold text-fg-1">/Joueur_du_Grenier</p>
@@ -560,7 +560,7 @@ const savors = [
       <div class="text-left flex flex-col items-center lg:self-start">
         <Image
           src={Etoiles}
-          alt={Etoiles}
+          alt="Etoiles"
           class="w-32 h-32 rounded-full object-cover mb-4"
         />
         <p class="font-bold text-fg-1">/Etoiles</p>
@@ -644,7 +644,7 @@ formatPrice(val) {
 
       <div class="max-w-[1440px] mx-auto grid lg:grid-cols-3 gap-8 p-8">
         <div
-          class="sticky top-24 self-start lg:col-span-2 flex flex-col items-center"
+          class="lg:sticky top-24 self-start lg:col-span-2 flex flex-col items-center"
           data-observer-part="target"
         >
           <div class="relative">
@@ -714,7 +714,7 @@ formatPrice(val) {
           >
             <!-- Ornement selection -->
             <div class="flex flex-col gap-4">
-              <h3 class="text-4xl font-serif">Ornement</h3>
+              <h3 class="text-4xl font-serif">ornement</h3>
               <p class="text-fg-3 font-medium">
                 Choisissez votre pierre précieuse
               </p>
@@ -771,7 +771,7 @@ formatPrice(val) {
       <!-- Panier résumé -->
       <div
         class="bg-fg-1 text-bg-3 bg-[image:var(--background-url)] bg-no-repeat bg-[size:50%] 2xl:bg-[size:30%] bg-[position:bottom_-5%_left_-40%] 2xl:bg-[position:bottom_-5%_left_-15%]"
-        style={`--background-url: url('${Websitelogo.src}');`}
+        style={`--background-url: url('${Websitelogo2.src}');`}
       >
         <div
           data-observer-part="end"
@@ -857,6 +857,7 @@ formatPrice(val) {
             </p>
           </div>
         </div>
+        <div class="bodrer " data-observer-part="end"></div>
 
         <div
           role="contentinfo"
@@ -905,6 +906,12 @@ formatPrice(val) {
       '[data-observer-part="target"]'
     ) as HTMLElement;
     const end = document.querySelector('[data-observer-part="end"]');
+    if (!target || !end) return;
+
+    const breakpoint = 1024;
+    const topSpacing = 24;
+
+    let placeholder;
 
     const targetStyle = getComputedStyle(target.firstElementChild!);
     (target as HTMLElement).style.width = targetStyle.width;

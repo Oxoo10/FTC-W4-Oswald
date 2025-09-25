@@ -15,8 +15,11 @@ import SlidingBg from "../components/sliding.astro";
   <nav class="flex items-center justify-between max-w-[1440px] mx-auto 2xl:px-4 2xl:py-3 px-2 py-4">
     
     <!-- Left: Logo -->
-    <div class="flex-shrink-0">
-      <Websitelogo class="h-8 w-auto sm:h-10 lg:h-12 text-fg-1 " />
+     
+    <div class="relative flex-shrink-0">
+      <Websitelogo class="h-8 w-auto sm:h-10 lg:h-12 text-fg-1 z-10" />
+      
+      <Websitelogo class="absolute top-0 h-8 w-auto sm:h-10 lg:h-12 bg-[linear-gradient(45deg,#30171B_0%,#30171B_40%,#3b82f6_40%,#3b82f6_42%,#60a5fa_42%,#60a5fa_45%,#f87171_45%,#f87171_47%,#ef4444_47%,#ef4444_49%,#30171B_49%,#30171B_100%)] bg-[length:200%_100%] animate-slide-twice z-20 " />
     </div>
 
     <!-- Middle: Text appears after scroll -->
