@@ -901,57 +901,50 @@ formatPrice(val) {
   </section>
 
   <script>
-    //document.addEventListener("alpine:initialized", () => {
-    const target = document.querySelector(
-      '[data-observer-part="target"]'
-    ) as HTMLElement;
-    const end = document.querySelector('[data-observer-part="end"]');
-    if (!target || !end) return;
+  const target = document.querySelector('[data-observer-part="target"]');
+  const end = document.querySelector('[data-observer-part="end"]');
 
+  if (!target || !end) {
+    console.warn("Sticky observer: missing target or end element");
+    
     const breakpoint = 1024;
     const topSpacing = 24;
-
-    let placeholder;
-
-    const targetStyle = getComputedStyle(target.firstElementChild!);
-    (target as HTMLElement).style.width = targetStyle.width;
-    (target as HTMLElement).style.height = targetStyle.height;
 
     let position = -1;
     let threshold = -1;
 
+    const targetStyle = getComputedStyle(target.firstElementChild);
+    target.style.width = targetStyle.width;
+    target.style.height = targetStyle.height;
+
     document.addEventListener("scroll", () => {
-      const targetRect = target!.getBoundingClientRect();
-      const endTarget = end!.getBoundingClientRect();
+      const targetRect = target.getBoundingClientRect();
+      const endTarget = end.getBoundingClientRect();
 
       if (endTarget.top - targetRect.bottom <= 32 && position === -1) {
-        target?.classList.remove("sticky");
-        target?.classList.add("fixed");
+        target.classList.remove("sticky");
+        target.classList.add("fixed");
         position = 0;
       } else if (endTarget.top - targetRect.bottom >= 32 && position === 0) {
         requestAnimationFrame(() => {
           console.log("Scrolling back");
-          target?.classList.replace("fixed", "sticky");
+          target.classList.replace("fixed", "sticky");
           position = -1;
         });
-      } else if (
-        position === 0 &&
-        threshold !== -1 &&
-        endTarget.bottom > threshold
-      ) {
+      } else if (position === 0 && threshold !== -1 && endTarget.bottom > threshold) {
         requestAnimationFrame(() => {
-          target?.classList.remove("absolute", "bottom-8");
-          target?.classList.add("fixed", "top-24");
+          target.classList.remove("absolute", "bottom-8");
+          target.classList.add("fixed", "top-24");
         });
       } else if (position === 0 && endTarget.bottom - targetRect.bottom <= 32) {
         requestAnimationFrame(() => {
-          target?.classList.remove("fixed", "top-24");
-          target?.classList.add("absolute", "bottom-8");
-          threshold =
-            threshold < endTarget.bottom ? endTarget.bottom : threshold;
+          target.classList.remove("fixed", "top-24");
+          target.classList.add("absolute", "bottom-8");
+          threshold = threshold < endTarget.bottom ? endTarget.bottom : threshold;
         });
       }
     });
-    //});
-  </script>
+  }
+</script>
+
 </Layout>
